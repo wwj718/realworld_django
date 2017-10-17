@@ -76,3 +76,12 @@ CELERY_ALWAYS_EAGER = True
 
 # Your local stuff: Below this line define 3rd party library settings
 # ------------------------------------------------------------------------------
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'realworld',
+        'USER': 'postgres',
+        'HOST': 'localhost',
+        'PASSWORD': ''
+    }
+}

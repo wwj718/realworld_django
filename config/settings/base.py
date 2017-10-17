@@ -49,6 +49,10 @@ THIRD_PARTY_APPS = [
     'allauth',  # registration
     'allauth.account',  # registration
     'allauth.socialaccount',  # registration
+
+    'rest_framework',  # utilities for rest apis
+    'corsheaders',
+    'haystack',
 ]
 
 # Apps specific for this project go here.
@@ -66,6 +70,8 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    # 跨域请求
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -282,3 +288,42 @@ ADMIN_URL = r'^admin/'
 
 # Your common stuff: Below this line define 3rd party library settings
 # ------------------------------------------------------------------------------
+
+# Django Rest Framework
+REST_FRAMEWORK = {
+    'PAGE_SIZE':
+    10,
+    'PAGINATE_BY_PARAM':
+    'page_size',
+    'MAX_PAGINATE_BY':
+    30,  # 最大输出数量
+    'DATETIME_FORMAT':
+    '%Y-%m-%d %H:%M:%S',
+    'DEFAULT_RENDERER_CLASSES':
+    ('rest_framework.renderers.JSONRenderer',
+     'rest_framework.renderers.BrowsableAPIRenderer', ),
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_FILTER_BACKENDS':
+    ('django_filters.rest_framework.DjangoFilterBackend', ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.TokenAuthentication',
+    )
+}
+
+# haystack
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE':
+        'haystack.backends.elasticsearch2_backend.Elasticsearch2SearchEngine',
+        'URL':
+        'http://127.0.0.1:9200/',
+        'INDEX_NAME':
+        'haystack',
+    },
+}
+
+TIME_ZONE = 'Asia/Shanghai'  # 修改时区(Shanghai)
