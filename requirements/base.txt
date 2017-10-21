@@ -10,12 +10,6 @@ django==1.10.8 # pyup: >=1.10,<1.11
 
 # Configuration
 django-environ==0.4.4
-whitenoise==3.3.1
-
-
-# Forms
-django-crispy-forms==1.6.1
-
 # Models
 django-model-utils==3.0.0
 
@@ -24,11 +18,6 @@ Pillow==4.3.0
 
 # Password storage
 argon2-cffi==16.3.0
-
-# For user registration, either via email or social
-# Well-built with regular release cycles!
-django-allauth==0.33.0
-
 
 # Python-PostgreSQL Database Adapter
 psycopg2==2.7.3.1
@@ -41,18 +30,13 @@ pytz==2017.2
 
 # Redis support
 django-redis==4.8.0
-redis>=2.10.5
-
-
-celery==3.1.25
-
-
+redis==2.10.6
 
 
 # Your custom requirements go here
 
 # restful api framework
-djangorestframework==3.6.3
+djangorestframework==3.6.4
 djangorestframework-jwt==1.11.0
 
 # cors
@@ -66,7 +50,7 @@ django-haystack==2.6.1
 elasticsearch==2.4.1
 
 # http request
-requests==2.18.1
+requests==2.18.4
 
 # markdown
 mistune==0.7.4
@@ -74,5 +58,5 @@ mistune==0.7.4
 # cron
 schedule==0.4.3
 
-# wechatpy
-# wechatpy==1.5.1
+# Job queue
+celery==4.1.0
